@@ -1,0 +1,9 @@
+FROM maven:3.8.4-openjdk-11
+WORKDIR /app
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN mvn dependency:resolve
+COPY src ./src
+EXPOSE 8082
+ADD target/5ARCTIC5-G1-DevopsProject.jar 5ARCTIC5-G1-DevopsProject.jar
+CMD ["mvn", "spring-boot:run"]

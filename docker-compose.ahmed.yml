@@ -1,0 +1,42 @@
+version: '3.3'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD:  
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'  
+      MYSQL_DATABASE: devops
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - mysql_config:/etc/mysql/conf.d
+    networks:
+      - app-network
+
+  spring-app:
+    image: ahmedsahli/ahmedsahli-5arctic5-g1-devopsproject:1.0.0
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/devops
+    networks:
+      - app-network
+  angular-app:
+    image: ahmedsahli/ahmedsahli-5arctic5-g1-devopsprojec-front:1.0.0
+    ports:
+      - "80:80"
+    depends_on:
+      - spring-app
+    networks:
+      - app-network
+
+volumes:
+  mysql_data:
+  mysql_config:
+networks:
+  app-network:
+    driver: bridge

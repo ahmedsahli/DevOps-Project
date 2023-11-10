@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "b7bf4c8e-c63a-404f-88ca-ab5edd9f0466",
+		"name": "test_collections",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "15013078"
+	},
+	"item": [
+		{
+			"name": "AddStock",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\" : \"wassim\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://192.168.240.131:8082/stock"
+			},
+			"response": []
+		},
+		{
+			"name": "AddProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\" : \"wassim\",\n    \"price\" : 50,\n    \"quantity\" : 5,\n    \"category\" : \"ELECTRONICS\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://192.168.240.131:8082/product/1"
+			},
+			"response": []
+		}
+	]
+}
